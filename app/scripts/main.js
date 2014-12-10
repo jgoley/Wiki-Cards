@@ -9,10 +9,14 @@ function getData(){
 
 
 getData().done(function(data){
-	displayData(data.query.pages[_.keys(data.query.pages)]);
+	displayData(data.query.pages[_.keys(data.query.pages)[0]]);
 });
 
 function displayData(article){
 	$('.title').html(article.title);
-	$('.intro').html(article.extract);
+	$('.intro').html(getFirstP(article.extract));
+}
+
+function getFirstP(text){
+	return text.split("</p>")[0]+"</p>";
 }
