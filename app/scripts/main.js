@@ -9,9 +9,10 @@ function getData(){
 
 
 getData().done(function(data){
-	displayData(data);
+	displayData(data.query.pages[_.keys(data.query.pages)]);
 });
 
-function displayData(data){
-	var article = data.query.pages[_.keys(data.query.pages)];
+function displayData(article){
+	$('.title').html(article.title);
+	$('.intro').html(article.extract);
 }
