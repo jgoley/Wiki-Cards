@@ -2,8 +2,23 @@
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
 
 body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+    background: #fafafa;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
 }
 
+.current-wiki {
+    margin:10px;
+    border:1px solid #CCC;
+    border-radius:3px;
+    transform: rotate(.4deg);
+    h1 {
+        background: #ebebeb;
+        padding: em(5px);
+        margin:0;
+    }
+    .intro {
+        padding:em(10px);
+
+    }
+}

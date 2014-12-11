@@ -30,24 +30,32 @@
                 <h1 class="title"></h1>
                 <div class="intro"></div>
             </div>
+
             <a href="" class="article-link">Go to article</a>
-            <button class="get-another">Get Another</button>
+            <a href="#" class="get-another">Get Another</a>
+            <a href="#" class="save">Save</a>
         </div>
         
         <footer>
             
         </footer>
-        
+    
+        <script type="text/template" id="application-template">
+        </script>
+
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="scripts/parse.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/fn.js"></script>
         <script src="scripts/main.js"></script>
+        <script src="scripts/router.js"></script>
+        <script src="scripts/views.js"></script>
         <!-- endbuild -->
 
     </body>
