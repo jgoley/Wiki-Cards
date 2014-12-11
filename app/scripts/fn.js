@@ -6,7 +6,6 @@ function buildLink(base_url, type, query){
 
 	if(type == 'search'){
 		opts = [
-			'action=query',
 			'list=search',
 			'srsearch='+query
 		];
@@ -21,12 +20,22 @@ function buildLink(base_url, type, query){
 	}
 
 	opts = _.union(base, opts);
-	console.log(opts);
-
 	_.each(opts, function(opt){
 		linkParams = linkParams+'&'+opt;
 	});
 	return base_url+linkParams;
+}
+
+function startDisplay(){
+	var query = $('.search').val().trim();
+	if(query.length > 0){
+		type='search';
+		wikiAPI_URL = buildLink(base_url, type, query);
+	} else{
+		type='';
+		wikiAPI_URL = buildLink(base_url);
+	}
+	getData(wikiAPI_URL, type);
 }
 
 // Get JSON with ajax request
@@ -42,13 +51,7 @@ function request(url){
 	});
 }
 
-/* -------------------------------------------------------------
-Make request and when done call function to display data.
-Uses underscore to get the first random object because the data 
-modeling is not great. Ideally the 'pages' object should be an array. 
-------------------------------------------------------------- */
 function getData(url, type) {
-	console.log(url);
 	request(url).done(function(data){
 		if(type)
 			displayData(data.query.search[0]);
@@ -59,7 +62,7 @@ function getData(url, type) {
 
 // Updates DOM
 function displayData(article){
-	var snippet = article.extract || article.snippet
+	var snippet = article.extract || article.snippet;
 	$('.current-wiki').removeClass('loading');
 	var title = article.title;
 	var rotation = randomNum(-1,1);

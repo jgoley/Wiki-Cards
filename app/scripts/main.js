@@ -8,25 +8,25 @@
  \|________|\|__| \|_______| \|_______|
 
  */
+console.log("%cLet me know if you have any questions. jgoley@gmail.com", 'color:red;')
 
-var base_url = 'https://en.wikipedia.org/w/api.php?';
+
+var base_url = 'https://en.wikipedia.org/w/api.php?',
+	type = '', // Random or query
+	wikiAPI_URL = buildLink(base_url); //Build link for initial card
 
 $(function(){
-
-	var type = '';
-	var wikiAPI_URL = buildLink(base_url);
+	// Display initial card
 	getData(wikiAPI_URL);
 
-	$('.discard').on('click', function(){
-		var query = $('.search').val().trim();
-		console.log(query);
-		if(query.length > 0){
-			type='search';
-			wikiAPI_URL = buildLink(base_url, type, query);
-		} else{
-			type='';
-			wikiAPI_URL = buildLink(base_url);
+	//Listen for button click 
+	$('.discard').on('click', startDisplay());
+
+	//Listen for enter
+	$(document).keyup(function(e){
+		if(e.keyCode == 13){
+			startDisplay();			
 		}
-		getData(wikiAPI_URL, type);
 	});
+
 });
