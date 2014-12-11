@@ -2,13 +2,14 @@ function buildLink(base_url, type, query){
 
 	var opts,
 		linkParams = '',
+		qty = $('.card-qty').val() || 1,
 		base = ['format=json','action=query'];
 
 	if(type === 'search'){
 		opts = [
 			'list=search',
 			'srsearch='+query,
-			'srlimit=4'
+			'srlimit='+qty
 		];
 	} else{
 		opts = [
@@ -70,6 +71,11 @@ function displayOne(article){
 
 function displayMultiple(articles){
 	$('.cards-wrap').empty();
+
+	if (articles.length === 0){
+		showNoCard()
+		return;
+	}
 	_.each(articles, function(article){
 		var data = {};
 		data.title = article.title;
@@ -83,7 +89,6 @@ function displayMultiple(articles){
 }
 
 function buildCard(article, type){
-	if(type) $('.current-wiki').addClass('small');
 	var snippet = article.extract || article.snippet;
 	$('.current-wiki').removeClass('loading');
 	var title = article.title;
@@ -92,6 +97,10 @@ function buildCard(article, type){
 	$('.title').html(title);
 	$('.intro').html(getFirstP(snippet));
 	$('.article-link').attr('href', articleLink(title)).html('w');
+}
+
+function showNoCard(){
+	$('.cards-wrap').html($('#nothing').html());
 }
 
 // Gets first paragraph from extract

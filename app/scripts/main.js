@@ -32,8 +32,10 @@ $(function() {
     //Listen for change in search field - change button text
     $('.search').keyup(function() {
         if ($(this).val().trim().length > 0) {
+			$('.card-qty').attr('disabled', false);
             changeText("Search");
         } else {
+			$('.card-qty').attr('disabled', true);
             changeText("Redeal");
         }
     })
