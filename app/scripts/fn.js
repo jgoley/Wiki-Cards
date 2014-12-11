@@ -84,7 +84,6 @@ function displayMultiple(articles){
 		data.rotation = randomNum(-1,1);
 		var template = _.template($('#cards').html());
 		$('.cards-wrap').append(template(data));
-		var snippet = article.extract || article.snippet;
 	});
 }
 
