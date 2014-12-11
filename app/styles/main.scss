@@ -1,24 +1,159 @@
 @import "../../bower_components/bourbon/dist/bourbon";
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
 
+$primary: #ff7373;
+$primary-dark: #ff4040;
+$secondary: #99cc99;
+$secondary-dark: #99cc99;
+$subtle: #ebebeb;
+$subtle-dark: #DDD;
+
+$text: #333;
+$subtle-text: #666;
+$bright-text: #FFF;
+
+$brown: #fef8f2;
+
+@import "fonts";
+
+@mixin button($bg, $text, $hover, $hover-text) {
+    display: block;
+    background: $bg;
+    color: $text;
+    border-radius: 3px;
+    text-align: center;
+    margin: 10px;
+    padding: em(15px);
+    font-weight: bold;
+    box-shadow: 0 2px 1px rgba(200, 200, 200, 0.5);
+    @extend .black-shadow;
+    &:hover {
+        background: $hover;
+        color: $hover-text;
+        @extend .white-shadow;
+    }
+}
+
 body {
     background: #fafafa;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #333;
+    font-size: 100%;
+    color: $text;
+    font-family: 'Lato', sans-serif;
+    @extend .white-shadow;
+}
+
+a {
+    text-decoration: none;
+    transition: .2s;
+    &:hover {
+        transition: .2s;
+    }
+}
+
+h1 {
+    font-weight: 900;
+}
+
+.main-container {
+    $max-width: 100%;
+    @include outer-container;
+}
+
+.content-wrap {
+    @include span-columns(12);
+    margin-top:em(30px);
+}
+
+.loading {
+    &::before {
+        content: 'l';
+        @extend .icon;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        font-size: 3em;
+        -webkit-animation: spin 2s infinite linear;
+        color:$subtle-dark;
+    }
+}
+
+@-webkit-keyframes spin {
+    0%   {-webkit-transform: rotate(0deg)}
+    100% {-webkit-transform: rotate(360deg)}
 }
 
 .current-wiki {
-    margin:10px;
-    border:1px solid #CCC;
-    border-radius:3px;
-    transform: rotate(.4deg);
+    @include span-columns(11);
+    @include shift(.5);
+    position:relative;
+    min-height: em(250px);
+    border: 1px solid $secondary;
+    border-radius: 3px;
+    transform: rotate(0.4deg);
+    background-color: $brown;
+    box-shadow: 0 2px 1px rgba(200, 200, 200, 0.5);
+    transition:.3s;
     h1 {
-        background: #ebebeb;
-        padding: em(5px);
-        margin:0;
+        margin: 0;
+        font-size: 1.75em;
     }
     .intro {
-        padding:em(10px);
+        padding: 0 em(15px);
+        position: relative;
+        font-size: 1em;
+    }
+    p {
+        line-height: 1.4em;
+    }
+}
 
+.top {
+    position: relative;
+    background: $secondary;
+    padding: em(15px);
+    min-height: 50px;
+}
+
+.discard {
+    @include button($primary, $bright-text, $secondary, $text);
+    @include span-columns(6);
+    @include shift(3);
+    margin-top: em(30px);
+    &::before {
+        content: 'd';
+        @extend .icon;
+        margin-right: em(10px);
+    }
+}
+
+.article-link {
+    @extend .icon;
+    position: absolute;
+    top: 50%;
+    right: em(5px);
+    transform: translate(0, -50%);
+    display: block;
+    font-weight: bold;
+    color: $text;
+    font-size: 1.8em;
+    &:hover {
+        color: $primary-dark;
+    }
+}
+
+@include media(min-width 600px) {
+
+    .main-container {
+        $max-width: 1000px;
+    }
+    .content-wrap {
+        @include span-columns(8);
+        @include shift(2);
+    }
+    .discard {
+        @include span-columns(6);
+        @include shift(3);
     }
 }

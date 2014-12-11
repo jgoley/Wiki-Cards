@@ -43,9 +43,8 @@ $(function(){
 
 	getData(Wiki.wikiAPI_URL);
 
-	$('.get-another').on('click', function(e){
-		e.prenventDefault;
-		getData(Wiki.wikiAPI_URL);
+	$('.discard').on('click', function(){
+		getData(wikiAPI_URL);
 	});
 });
 
