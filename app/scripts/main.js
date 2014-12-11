@@ -8,7 +8,10 @@
  \|________|\|__| \|_______| \|_______|
 
  */
-console.log("%cLet me know if you have any questions. jgoley@gmail.com", 'color:red;')
+
+'use strict';
+
+console.log("%cLet me know if you have any questions.", 'color:red;')
 
 
 var base_url = 'https://en.wikipedia.org/w/api.php?',

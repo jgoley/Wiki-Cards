@@ -1,3 +1,5 @@
+'use strict';
+
 function buildLink(base_url, type, query){
 
 	var opts,
