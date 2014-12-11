@@ -24,7 +24,7 @@ var options = [
 getData(wikiAPI_URL);
 
 $(function(){
-	$('.get-another').on('click', function(){
+	$('.discard').on('click', function(){
 		getData(wikiAPI_URL);
 	});
 });
