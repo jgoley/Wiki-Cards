@@ -121,6 +121,7 @@ h1 {
         padding: em(15px);
         position: relative;
         font-size: .9em;
+        line-height: 1.5em;
     }
     p {
         margin: 0;
@@ -135,7 +136,7 @@ h1 {
         display: block;
     }
     &:hover {
-            transform: scale(1.05); 
+        transform: scale(1.09); 
         .current-wiki {
             border: 1px solid $primary;
             transition:.2s;
@@ -231,7 +232,7 @@ select {
         .intro {
             padding: em(15px);
             position: relative;
-            font-size: 1em;
+            font-size: .9em;
         }
     }
     .update-options {
