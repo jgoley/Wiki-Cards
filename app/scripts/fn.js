@@ -27,7 +27,6 @@ function buildLink(base_url, type, query){
 }
 
 function startDisplay(){
-	console.log("starting");
 	var query = $('.search').val().trim(),
 		wikiAPI_URL = "";
 	if(query.length > 0){
