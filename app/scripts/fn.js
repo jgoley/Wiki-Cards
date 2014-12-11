@@ -10,7 +10,8 @@ function buildLink(base_url, opts){
 
 // Get JSON with ajax request
 function request(url){
-	$('.intro').html('').addClass('loading');
+	$('.current-wiki').addClass('loading');
+	$('.intro').html('');
 	$('.title').html('');
 	$('.article-link').html('');
 	return $.ajax({ 
@@ -35,9 +36,9 @@ function getData(url) {
 
 // Updates DOM
 function displayData(article){
-	$('.intro').removeClass('loading');
+	$('.current-wiki').removeClass('loading');
 	var title = article.title;
-	var rotation = randomNum(-.5,.5);
+	var rotation = randomNum(-1,1);
 	$('.current-wiki').css('transform', 'rotate('+rotation+'deg)');
 	$('.title').html(title);
 	$('.intro').html(getFirstP(article.extract));
