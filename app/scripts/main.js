@@ -29,14 +29,13 @@ $(function() {
         }
     });
 
+    //Listen for change in search field - change button text
     $('.search').keyup(function() {
         if ($(this).val().trim().length > 0) {
             changeText("Search");
         } else {
             changeText("Redeal");
         }
-
     })
-
 
 });
