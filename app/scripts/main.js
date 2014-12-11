@@ -9,27 +9,34 @@
 
  */
 
-'use strict';
-
 console.log("%cLet me know if you have any questions.", 'color:red;')
 
-
 var base_url = 'https://en.wikipedia.org/w/api.php?',
-	type = '', // Random or query
-	wikiAPI_URL = buildLink(base_url); //Build link for initial card
+    type = '',
+    wikiAPI_URL = buildLink(base_url);
 
-$(function(){
-	// Display initial card
-	getData(wikiAPI_URL);
+$(function() {
+    // Display initial card
+    getData(wikiAPI_URL);
 
-	//Listen for button click 
-	$('.discard').on('click', startDisplay());
+    //Listen for button click 
+    $('.discard').on('click', startDisplay);
 
-	//Listen for enter
-	$(document).keyup(function(e){
-		if(e.keyCode == 13){
-			startDisplay();			
-		}
-	});
+    //Listen for enter
+    $(document).keyup(function(e) {
+        if (e.keyCode === 13) {
+            startDisplay();
+        }
+    });
+
+    $('.search').keyup(function() {
+        if ($(this).val().trim().length > 0) {
+            changeText("Search");
+        } else {
+            changeText("Redeal");
+        }
+
+    })
+
 
 });

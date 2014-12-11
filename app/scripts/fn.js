@@ -1,12 +1,10 @@
-'use strict';
-
 function buildLink(base_url, type, query){
 
 	var opts,
 		linkParams = '',
 		base = ['format=json','action=query'];
 
-	if(type == 'search'){
+	if(type === 'search'){
 		opts = [
 			'list=search',
 			'srsearch='+query
@@ -29,7 +27,9 @@ function buildLink(base_url, type, query){
 }
 
 function startDisplay(){
-	var query = $('.search').val().trim();
+	console.log("starting");
+	var query = $('.search').val().trim(),
+		wikiAPI_URL = "";
 	if(query.length > 0){
 		type='search';
 		wikiAPI_URL = buildLink(base_url, type, query);
@@ -86,4 +86,9 @@ function articleLink(title){
 
 function randomNum(min, max){
     return ((Math.random() * max) + min) * (Math.random() < 0.5 ? -1 : 1);
+}
+
+function changeText(w){
+	console.log("changing", w);
+	$('.button-text').html(w);
 }
