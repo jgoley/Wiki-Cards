@@ -47,7 +47,7 @@ body {
 a {
     text-decoration: none;
     transition: .2s;
-    color:$text;
+    color: $text;
     &:hover {
         transition: .2s;
     }
@@ -110,7 +110,7 @@ h1 {
         height: em(50px);
         width: 100%;
         bottom: 0;
-        background-image: linear-gradient(to bottom , rgba(254, 248, 242, 0), rgba(254, 248, 242, 1));
+        background-image: linear-gradient(to bottom, rgba(254, 248, 242, 0), rgba(254, 248, 242, 1));
     }
     h1 {
         margin: 0;
@@ -129,17 +129,21 @@ h1 {
     }
 }
 
-.card-link{
+.card-link {
     display: none;
-    &:first-child{
+    &:first-child {
         display: block;
     }
-    &:hover{
-        .current-wiki{
-            border:1px solid $primary;
+    &:hover {
+            transform: scale(1.05); 
+        .current-wiki {
+            border: 1px solid $primary;
+            transition:.2s;
+            transform: none !important;
         }
-        .top{
+        .top {
             background: $primary;
+            transition:.2s;
         }
     }
 }
@@ -149,13 +153,15 @@ h1 {
     background: $secondary;
     padding: em(15px);
     min-height: 50px;
+    transition:.2s;
 }
 
 .update-options {
     @include span-columns(8);
     @include shift(2);
 }
-.options{
+
+.options {
     @include outer-container;
     margin: em(30px) 0;
 }
@@ -167,11 +173,11 @@ input {
     padding: 3px;
     border-radius: 3px;
     font-size: 1em;
-    padding:em(5px) em(10px);
+    padding: em(5px) em(10px);
 }
 
 input,
-select{
+select {
     display: inline-block;
     @extend .lato;
     vertical-align: middle;
@@ -201,7 +207,8 @@ select{
         color: $primary-dark;
     }
 }
-.card-qty{
+
+.card-qty {
     display: none;
 }
 
@@ -212,7 +219,7 @@ select{
     }
     .content-wrap {
         @include span-columns(11);
-        @include shift(.5);
+        @include shift(0.5);
         margin-top: em(30px);
     }
     .current-wiki {
@@ -231,33 +238,30 @@ select{
         @include span-columns(8 of 12);
         @include shift(2);
     }
-    .card-link{
-        .current-wiki{
+    .card-link {
+        .current-wiki {
             @include span-columns(12);
             @include shift(0);
         }
         display: block;
         @include span-columns(4);
         @include omega(3n);
-        margin-bottom:em(20px);
-
-        h1{
+        margin-bottom: em(20px);
+        h1 {
             font-size: 1.2em;
         }
     }
-
-    .card-qty{
+    .card-qty {
         display: inline-block;
     }
-
-    .hidden{
+    .hidden {
         display: none;
     }
-    input{
+    input {
         @include span-columns(8);
     }
-    select{
-    @include span-columns(4);
-    margin-top:em(8px);
-}
+    select {
+        @include span-columns(4);
+        margin-top: em(8px);
+    }
 }
