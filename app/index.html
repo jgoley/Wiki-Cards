@@ -16,7 +16,6 @@
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,700,900,300italic' rel='stylesheet' type='text/css'>
     </head>
     <body>
         
@@ -28,14 +27,17 @@
         
         <section class="main-container">
             <div class="content-wrap">
-                <div class="current-wiki">
-                    <div class="top">
-                        <h1 class="title"></h1>
-                        <a href="#" class="article-link" title="View on Wikipedia"></a>
-                    </div>
-                    <div class="intro"></div>
+                <div class="cards-wrap">
                 </div>
                 <div class="update-options">
+                    <select value="6">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option selected>6</option>
+                    </select>
                     <input type="text" class="search" placeholder="search terms">
                     <a href="#" class="discard"><span class="button-text">Redeal</span></a>
                 </div>
@@ -45,7 +47,28 @@
         <footer>
             
         </footer>
-        
+
+        <script type="text/template" id="one-card">
+            <div class="current-wiki">
+                    <div class="top">
+                        <h1 class="title"></h1>
+                        <a href="#" class="article-link" title="View on Wikipedia"></a>
+                    </div>
+                    <div class="intro"></div>
+                </div>
+        </script>
+
+        <script type="text/template" id="cards">
+            <a href="<%=link %>" class="card-link">
+            <div class="current-wiki small" style="transform: rotate(<%=rotation%>deg)">
+                    <div class="top">
+                        <h1 class="title"><%=title %></h1>
+                    </div>
+                    <div class="intro"><%=snippet %></div>
+                </div>
+            </a>
+        </script>
+
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>

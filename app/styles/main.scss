@@ -1,7 +1,4 @@
 @import "../../bower_components/bourbon/dist/bourbon";
-
-$gutter: 0em;
-
 @import "../../bower_components/neat/app/assets/stylesheets/neat";
 
 $primary: #ff7373;
@@ -50,6 +47,7 @@ body {
 a {
     text-decoration: none;
     transition: .2s;
+    color:$text;
     &:hover {
         transition: .2s;
     }
@@ -112,7 +110,7 @@ h1 {
         height: em(40px);
         width: 100%;
         bottom: 0;
-        background-image: linear-gradient(to bottom right, rgba(254, 248, 242, 0), rgba(254, 248, 242, 1));
+        background-image: linear-gradient(to bottom , rgba(254, 248, 242, 0), rgba(254, 248, 242, 1));
     }
     h1 {
         margin: 0;
@@ -128,6 +126,21 @@ h1 {
         margin: 0;
         padding: 0;
         line-height: 1.4em;
+    }
+}
+
+.card-link{
+    display: none;
+    &:first-child{
+        display: block;
+    }
+    &:hover{
+        .current-wiki{
+            border:1px solid $primary;
+        }
+        .top{
+            background: $primary;
+        }
     }
 }
 
@@ -208,5 +221,15 @@ input {
     }
     input {
         width: 60%;
+    }
+    .card-link{
+        display: block;
+        @include span-columns(4);
+        @include omega(3n);
+        margin-bottom:em(20px);
+
+        h1{
+            font-size: 1.2em;
+        }
     }
 }

@@ -7,7 +7,8 @@ function buildLink(base_url, type, query){
 	if(type === 'search'){
 		opts = [
 			'list=search',
-			'srsearch='+query
+			'srsearch='+query,
+			'srlimit=4'
 		];
 	} else{
 		opts = [
@@ -55,14 +56,34 @@ function request(url){
 function getData(url, type) {
 	request(url).done(function(data){
 		if(type)
-			displayData(data.query.search[0]);
+			displayMultiple(data.query.search);
 		else
-			displayData(data.query.pages[_.keys(data.query.pages)[0]]);
+			displayOne(data.query.pages[_.keys(data.query.pages)[0]]);
 	});
 }
 
 // Updates DOM
-function displayData(article){
+function displayOne(article){
+	$('.cards-wrap').html($('#one-card').html());
+	buildCard(article);
+}
+
+function displayMultiple(articles){
+	$('.cards-wrap').empty();
+	_.each(articles, function(article){
+		var data = {};
+		data.title = article.title;
+		data.snippet = getFirstP(article.snippet);
+		data.link = articleLink(article.title);
+		data.rotation = randomNum(-1,1);
+		var template = _.template($('#cards').html());
+		$('.cards-wrap').append(template(data));
+		var snippet = article.extract || article.snippet;
+	});
+}
+
+function buildCard(article, type){
+	if(type) $('.current-wiki').addClass('small');
 	var snippet = article.extract || article.snippet;
 	$('.current-wiki').removeClass('loading');
 	var title = article.title;
@@ -88,6 +109,5 @@ function randomNum(min, max){
 }
 
 function changeText(w){
-	console.log("changing", w);
 	$('.button-text').html(w);
 }
