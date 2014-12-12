@@ -7,9 +7,9 @@
 \ \________\|\__\\ \_______\\ \_______\
  \|________|\|__| \|_______| \|_______|
 
- */
+Wiki Cards
 
-console.log("%cLet me know if you have any questions.", 'color:red;')
+ */
 
 var base_url = 'https://en.wikipedia.org/w/api.php?',
     type = '',
@@ -39,5 +39,9 @@ $(function() {
             changeText("Redeal");
         }
     })
-
 });
+
+
+try {
+	console.log('%c    ___        ________   ________ \n    |\\  \\      |\\   ____\\ |\\   __  \\ \n    \\ \\  \\     \\ \\  \\___| \\ \\  \\|\\  \\ \n  __ \\ \\  \\     \\ \\  \\  ___\\ \\  \\\\\\  \\ \n |\\  \\\\_\\  \\  ___\\ \\  \\|\\  \\\\ \\  \\\\\\  \\   \n \\ \\________\\|\\__\\\\ \\_______\\\\ \\_______\\ \n  \\|________|\\|__| \\|_______| \\|_______| \n\n %cLet me know if you have any questions. \n\n github: http://github.com/jgoley \n twitter: http://twitter.com/jgoley \n ', 'color:rgba(1, 164, 245, 1);', 'color:red;')
+    } catch(e) {}
