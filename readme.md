@@ -1,6 +1,6 @@
 # Wiki Cards
 
-Exercise using [wikipedia's api](https://en.wikipedia.org/w/api.php) to pull a random articles' title, snippet, and link. Displays in a 'wiki card'.
+Exercise using [wikipedia's api](https://en.wikipedia.org/w/api.php) to pull a random article's title, snippet, and link. Displays in 'wiki cards'.
 
 **Uses**:
 - JQuery
