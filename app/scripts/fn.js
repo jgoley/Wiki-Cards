@@ -1,7 +1,4 @@
 function buildLink(base_url, type, query) {
-
-// prop=extracts&pilimit=max&&explaintext&exlimit=max
-
     var opts,
         linkParams = '',
         qty = $('.card-qty').val() || 1,
@@ -27,7 +24,6 @@ function buildLink(base_url, type, query) {
     _.each(opts, function(opt) {
         linkParams = linkParams + '&' + opt;
     });
-    console.log(base_url + linkParams);
     return base_url + linkParams;
 }
 
@@ -59,8 +55,13 @@ function request(url) {
 
 function getData(url, type) {
     request(url).done(function(data) {
-        if (type)
-            displayMultiple(data.query.search);
+        if (type) {
+            var results = [];
+            for(var i = 0; i < _.keys(data.query.pages).length; i++){
+                results.push(data.query.pages[_.keys(data.query.pages)[i]]);
+            }
+            displayMultiple(results);
+        }
         else
             displayOne(data.query.pages[_.keys(data.query.pages)[0]]);
     });
