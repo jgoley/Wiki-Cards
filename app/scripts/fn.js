@@ -1,23 +1,25 @@
 function buildLink(base_url, type, query) {
 
+// prop=extracts&pilimit=max&&explaintext&exlimit=max
+
     var opts,
         linkParams = '',
         qty = $('.card-qty').val() || 1,
-        base = ['format=json', 'action=query'];
+        base = ['format=json', 'action=query', 'prop=extracts', 'exintro' ];
 
     if (type === 'search') {
         opts = [
-            'list=search',
-            'srsearch=' + query,
-            'srlimit=' + qty
+            'generator=search',
+            'gsrsearch=' + query,
+            'gsrlimit=' + qty,
+            'explaintext',
+            'exlimit=max',
         ];
     } else {
         opts = [
             'generator=random',
             'grnnamespace=0',
             'grnlimit=1',
-            'prop=extracts',
-            'exintro='
         ];
     }
 
@@ -25,6 +27,7 @@ function buildLink(base_url, type, query) {
     _.each(opts, function(opt) {
         linkParams = linkParams + '&' + opt;
     });
+    console.log(base_url + linkParams);
     return base_url + linkParams;
 }
 
@@ -79,7 +82,7 @@ function displayMultiple(articles) {
     _.each(articles, function(article) {
         var data = {};
         data.title = article.title;
-        data.snippet = getFirstP(article.snippet);
+        data.snippet = getFirstP(article.extract);
         data.link = articleLink(article.title);
         data.rotation = randomNum(-1, 1);
         var template = _.template($('#cards').html());
@@ -88,7 +91,7 @@ function displayMultiple(articles) {
 }
 
 function buildCard(article, type) {
-    var snippet = article.extract || article.snippet;
+    var snippet = article.extract;
     $('.current-wiki').removeClass('loading');
     var title = article.title;
     var rotation = randomNum(-1, 1);
