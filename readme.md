@@ -4,6 +4,8 @@ Exercise using [wikipedia's api](https://en.wikipedia.org/w/api.php) to pull a r
 
 **Uses**:
 - JQuery
+- Underscore
+- HTML/CSS3 (Sass)
 - Neat
 - Yoeman
 - Gulp
